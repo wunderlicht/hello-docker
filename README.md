@@ -25,3 +25,8 @@ and look at the sizes of the resulting containers.
 |Build/run container      |           |
 |Multistage distroless    |           |
 |Multistage from scratch  |           |
+
+## Further Areas of Interest
+It is obvious that size plays a role in everything related
+to downloading and deploying images. What is the impact on
+starting time?
