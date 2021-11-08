@@ -14,6 +14,8 @@ func hello(w http.ResponseWriter, _ *http.Request) {
 }
 
 func main() {
+	addr := ":8080"
 	http.HandleFunc("/", hello)
-	_ = http.ListenAndServe(":8080", nil)
+	fmt.Println("listening on", addr)
+	_ = http.ListenAndServe(addr, nil)
 }
