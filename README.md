@@ -19,12 +19,13 @@ We will dockerize our little http server with different dockerfiles
 and look at the sizes of the resulting containers. 
 
 ## Size Comparison
-| Artefact                | Size (Bytes) | Size (MB) |Docker Size (MiB)|
-|-------------------------|-------------:|----------:|-------:|
-|go binary                |      6074550 |      5.79 | 6.07   |
-|Build and run            |    321389403 |    306.50 | 321.39 |
-|Multistage distroless    |              |           |
-|Multistage from scratch  |              |           |
+| Artefact                | FROM  |  Size (Bytes) | Size (MB) |Docker Size (MiB)|
+|-------------------------|---------------------------------|----------:|-------:|-------:|
+|go binary                | n/a                             |   6074550 |   5.79 |   6.07 |
+|Build and run            | golang                          | 946851894 | 902.99 | 947.00    |
+|Build and run            | golang:alpine                   | 321389403 | 306.50 | 321.39 |
+|Multistage distroless    | gcr.io/distroless/base-debian10 |  25272869 |  24.10 |  25.30  |
+|Multistage from scratch  | scratch                         |   6065490 |   5.78 |   6.07 |
 
 * Built on MacOS targeting linux `GOOS=linux GOARCH=amd64 go build`
 * Size in Bytes as reported by `ls` (binary) or
