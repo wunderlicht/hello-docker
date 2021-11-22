@@ -1,9 +1,21 @@
 help:
-	@echo "use make [golang|alpine|alpine-static|distroless|scratch] to build an image"
-	@echo "use make [exe|exe-static|exe-stripped] to build an executable locally"
-	@echo "use make all to build all images (might take a while)"
+	@echo "USAGE:"
+	@echo "make [golang|alpine|alpine-static|distroless|scratch]"
+	@echo "	build a container"
+	@echo "make containers"
+	@echo "	build all containers (might take a while)"
+	@echo "make [exe|exe-static|exe-stripped]"
+	@echo "	build an executable"
+	@echo "make executables"
+	@echo "	build all executables"
+	@echo "make all"
+	@echo "	build all images and all executables (might take a while)"
 
-all: golang alpine alpine-static distroless scratch
+all: containers executables
+
+containers: golang alpine alpine-static distroless scratch
+
+executables: exe exe-static exe-stripped
 
 golang:
 	docker build -t hello-docker:golang -f buildrun.Dockerfile .
