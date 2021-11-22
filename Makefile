@@ -29,6 +29,9 @@ alpine-static:
 distroless:
 	docker build -t hello-docker:distroless -f multistagedistroless.Dockerfile .
 
+distroless-static:
+	docker build -t hello-docker:distroless-static -f multistagedistrolessstatic.Dockerfile .
+
 scratch:
 	docker build -t hello-docker:scratch -f multistagescratch.Dockerfile .
 
