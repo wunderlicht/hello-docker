@@ -1,6 +1,6 @@
 help:
 	@echo "USAGE:"
-	@echo "make [golang|alpine|alpine-static|distroless|scratch]"
+	@echo "make [golang|alpine|alpine-static|distroless|distroless-static|scratch]"
 	@echo "	build a container"
 	@echo "make containers"
 	@echo "	build all containers (might take a while)"
@@ -13,7 +13,7 @@ help:
 
 all: containers executables
 
-containers: golang alpine alpine-static distroless scratch
+containers: golang alpine alpine-static distroless distroless-static scratch scratch-stripped
 
 executables: exe exe-static exe-stripped
 
@@ -34,6 +34,9 @@ distroless-static:
 
 scratch:
 	docker build -t hello-docker:scratch -f multistagescratch.Dockerfile .
+
+scratch-stripped:
+	docker build -t hello-docker:scratch-stripped -f multistagescratchstripped.Dockerfile .
 
 exe:
 	go build
