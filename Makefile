@@ -11,9 +11,9 @@ help:
 	@echo "make all"
 	@echo "	build all images and all executables (might take a while)"
 
-all: containers executables
+all: images executables
 
-containers: golang alpine alpine-static distroless distroless-static scratch scratch-stripped
+images: golang alpine alpine-static distroless distroless-static scratch scratch-stripped
 
 executables: exe exe-static exe-stripped
 
