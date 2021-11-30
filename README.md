@@ -19,13 +19,18 @@ We will dockerize our little http server with different dockerfiles
 and look at the sizes of the resulting containers. 
 
 ## Size Comparison
-| Artefact                | FROM  |  Size (Bytes) | Size (MB) |Docker Size (MiB)|
-|-------------------------|---------------------------------|----------:|-------:|-------:|
-|go binary                | n/a                             |   6074550 |   5.79 |   6.07 |
-|Build and run            | golang                          | 946851894 | 902.99 | 947.00    |
-|Build and run            | golang:alpine                   | 321389403 | 306.50 | 321.39 |
-|Multistage distroless    | gcr.io/distroless/base-debian10 |  25272869 |  24.10 |  25.30  |
-|Multistage from scratch  | scratch                         |   6065490 |   5.78 |   6.07 |
+The size of the final version (hello-docker:scratch-stripped)
+is actually only 0.5% of our naive stating point (hello-docker:golang).  
+
+| Artefact                    | FROM                            | Size (Bytes) | Size (MB) |Docker Size (MiB)|
+|-----------------------------|---------------------------------|-------------:|----------:|----------------:|
+|go binary                    | n/a                             |      6074550 |      5.79 |            6.07 |
+|Build and run                | golang                          |    946851894 |    902.99 |          947.00 |
+|Build and run                | golang:alpine                   |    321389403 |    306.50 |          321.39 |
+|Multistage distroless        | gcr.io/distroless/base-debian10 |     25272869 |     24.10 |           25.30 |
+|Multistage distroless-static | gcr.io/distroless/static        |      8427234 |      8.04 |            8.43 |
+|Multistage scratch           | scratch                         |      6065490 |      5.78 |            6.07 |
+|Multistage scratch stripped  | scratch                         |      4280320 |      4.08 |            4.28 |
 
 * Built on MacOS targeting linux `GOOS=linux GOARCH=amd64 go build`
 * Size in Bytes as reported by `ls` (binary) or
