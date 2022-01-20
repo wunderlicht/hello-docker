@@ -1,0 +1,5 @@
+# ignore following things, i.e. exclude them from the build context
+.idea
+.git
+.gitignore
+Makefile
