@@ -1,6 +1,6 @@
 help:
 	@echo "USAGE:"
-	@echo "make [golang|alpine|alpine-static|distroless|distroless-static|scratch]"
+	@echo "make [golang|alpine|alpine-static|distroless|distroless-static|scratch|scratch-stripped]"
 	@echo "	build a container"
 	@echo "make containers"
 	@echo "	build all containers (might take a while)"
