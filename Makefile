@@ -1,9 +1,9 @@
 help:
 	@echo "USAGE:"
 	@echo "make [golang|alpine|alpine-static|distroless|distroless-static|scratch|scratch-stripped]"
-	@echo "	build a container"
-	@echo "make containers"
-	@echo "	build all containers (might take a while)"
+	@echo "	build an image"
+	@echo "make images"
+	@echo "	build all images (might take a while)"
 	@echo "make [exe|exe-static|exe-stripped]"
 	@echo "	build an executable"
 	@echo "make executables"
