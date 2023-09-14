@@ -40,6 +40,9 @@ is actually only 0.5% of our naive stating point (hello-docker:golang).
 * Docker Size in MiB as reported by docker or calculated
   by Bytes/1000/1000 (for the binary)
 
+## Reproducing the results
+run make to get help and rebuild the parts yourself. See above how to get the numbers.
+
 ## Further Areas of Interest
 It is obvious that size plays a role in everything related
 to downloading and deploying images. What is the impact on
