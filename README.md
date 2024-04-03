@@ -20,7 +20,7 @@ and look at the sizes of the resulting containers.
 
 ## Size Comparison
 The size of the final version (hello-docker:scratch-stripped)
-is actually only 0.5% of our naive stating point (hello-docker:golang).  
+is actually only 0.5% of our naive starting point (hello-docker:golang).  
 
 | Artefact                     | FROM                            | Size (Bytes) | Size (MB) | Docker Size (MiB) |
 |------------------------------|---------------------------------|-------------:|----------:|------------------:|
