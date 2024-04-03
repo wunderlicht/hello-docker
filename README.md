@@ -8,7 +8,7 @@ in main.go.
 
 ## Yeah... Why?
 Actually because I was shocked how big images can become when you
-use the same image to build and run you app.
+use the same image to build and run your app.
 
 I thought to myself, now we have it all in containers, but it
 takes ages to download these things from a repo and to start them
