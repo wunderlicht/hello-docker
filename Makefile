@@ -10,6 +10,8 @@ help:
 	@echo "	build all executables"
 	@echo "make all"
 	@echo "	build all images and all executables (might take a while)"
+	@echo "make clean"
+	@echo " CAUTION! Prunes docker from ALL images and deletes the created executables"
 
 all: images executables
 
@@ -46,3 +48,9 @@ exe-static:
 
 exe-stripped:
 	CGO_ENABLED=0 go build -ldflags="-s -w" -o hello-docker-stripped
+
+clean:
+	docker system prune --all --force
+	rm hello-docker
+	rm hello-docker-static
+	rm hello-docker-stripped
