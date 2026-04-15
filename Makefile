@@ -1,3 +1,7 @@
+# chose your docker runtime command
+# CRCLI = docker
+CRCLI = container
+
 help:
 	@echo "USAGE:"
 	@echo "make [golang|alpine|alpine-static|distroless|distroless-static|scratch|scratch-stripped]"
@@ -20,25 +24,25 @@ images: golang alpine alpine-static distroless distroless-static scratch scratch
 executables: exe exe-static exe-stripped
 
 golang:
-	docker build -t hello-docker:golang -f buildrun.Dockerfile .
+	$(CRCLI) build -t hello-docker:golang -f buildrun.Dockerfile .
 
 alpine:
-	docker build -t hello-docker:alpine -f buildrunalpine.Dockerfile .
+	$(CRCLI) build -t hello-docker:alpine -f buildrunalpine.Dockerfile .
 
 alpine-static:
-	docker build -t hello-docker:alpine-static -f buildrunstatic.Dockerfile .
+	$(CRCLI) build -t hello-docker:alpine-static -f buildrunstatic.Dockerfile .
 
 distroless:
-	docker build -t hello-docker:distroless -f multistagedistroless.Dockerfile .
+	$(CRCLI) build -t hello-docker:distroless -f multistagedistroless.Dockerfile .
 
 distroless-static:
-	docker build -t hello-docker:distroless-static -f multistagedistrolessstatic.Dockerfile .
+	$(CRCLI) build -t hello-docker:distroless-static -f multistagedistrolessstatic.Dockerfile .
 
 scratch:
-	docker build -t hello-docker:scratch -f multistagescratch.Dockerfile .
+	$(CRCLI) build -t hello-docker:scratch -f multistagescratch.Dockerfile .
 
 scratch-stripped:
-	docker build -t hello-docker:scratch-stripped -f multistagescratchstripped.Dockerfile .
+	$(CRCLI) build -t hello-docker:scratch-stripped -f multistagescratchstripped.Dockerfile .
 
 exe:
 	go build
@@ -50,10 +54,13 @@ exe-stripped:
 	CGO_ENABLED=0 go build -ldflags="-s -w" -o hello-docker-stripped
 
 clean:
+ifeq ($(CRCLI),docker)
 	docker system prune --all --force
-	rm hello-docker
-	rm hello-docker-static
-	rm hello-docker-stripped
+else ifeq ($(CRCLI), container)
+	container prune
+	container image delete --all --force
+endif
+
 	-rm hello-docker
 	-rm hello-docker-static
 	-rm hello-docker-stripped
