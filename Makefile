@@ -1,4 +1,4 @@
-# chose your docker runtime command
+# chose your container runtime command
 # CRCLI = docker
 CRCLI = container
 
