@@ -54,3 +54,6 @@ clean:
 	rm hello-docker
 	rm hello-docker-static
 	rm hello-docker-stripped
+	-rm hello-docker
+	-rm hello-docker-static
+	-rm hello-docker-stripped
