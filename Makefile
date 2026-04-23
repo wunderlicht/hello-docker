@@ -1,7 +1,3 @@
-# chose your container runtime command
-# CRCLI = docker
-CRCLI = container
-
 help:
 	@echo "USAGE:"
 	@echo "make [golang|alpine|alpine-static|distroless|distroless-static|scratch|scratch-stripped]"
@@ -16,6 +12,10 @@ help:
 	@echo "	build all images and all executables (might take a while)"
 	@echo "make clean"
 	@echo " CAUTION! Prunes docker from ALL images and deletes the created executables"
+
+# chose your container runtime command
+# CRCLI = docker
+CRCLI = container
 
 all: images executables
 
