@@ -17,6 +17,19 @@ help:
 # CRCLI = docker
 CRCLI = container
 
+# Define your container runtimes purge routines here.
+docker-purge:
+	docker system prune --all --force
+
+container-purge:
+	container prune
+	container image delete --all --force
+
+clean: $(CRCLI)-purge
+	-rm hello-docker
+	-rm hello-docker-static
+	-rm hello-docker-stripped
+
 all: images executables
 
 images: golang alpine alpine-static distroless distroless-static scratch scratch-stripped
@@ -52,15 +65,3 @@ exe-static:
 
 exe-stripped:
 	CGO_ENABLED=0 go build -ldflags="-s -w" -o hello-docker-stripped
-
-clean:
-ifeq ($(CRCLI),docker)
-	docker system prune --all --force
-else ifeq ($(CRCLI), container)
-	container prune
-	container image delete --all --force
-endif
-
-	-rm hello-docker
-	-rm hello-docker-static
-	-rm hello-docker-stripped
