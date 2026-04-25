@@ -25,10 +25,12 @@ container-purge:
 	container prune
 	container image delete --all --force
 
-clean: $(CRCLI)-purge
+clean-exes:
 	-rm hello-docker
 	-rm hello-docker-static
 	-rm hello-docker-stripped
+
+clean: $(CRCLI)-purge clean-exes
 
 all: images executables
 
